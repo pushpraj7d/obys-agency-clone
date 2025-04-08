@@ -1,4 +1,5 @@
-
+function loadingAnimation(){
+    
 var tl = gsap.timeline();   //By this animation will star one by one 
 tl.from(".line h1",{        //Loader page text
     stagger:0.25,
@@ -42,3 +43,25 @@ tl.from("#page1" ,{
 tl.to("#loader",{
     display: "none"
 })
+tl.from("#nav",{
+    opacity:0,
+    y:10
+})
+tl.from(".hero1 h1, .hero2 h1, .hero3 h2, .hero4 h1" ,{
+    y:120,
+    stagger:0.2
+})
+}
+function cursorAnimation(){
+    document.addEventListener("mousemove",function(dets){ //pure doccument pe jaha mouse move krega wha ki location mil jayegi
+        gsap.to("#crsr" ,{                  //location jaha milegi wha animation kr dena cursur div ka 
+            left:dets.x,                        
+            top:dets.y
+        })
+        
+    });
+    
+    Shery.makeMagnet("#nav-part2 h4");   //we used shery js librery here 
+}
+loadingAnimation(); //loading animation function ko call kiya
+cursorAnimation();  //cursor animation function ko call kiya
