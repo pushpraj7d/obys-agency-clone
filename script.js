@@ -47,9 +47,13 @@ tl.from("#nav",{
     opacity:0,
     y:10
 })
-tl.from(".hero1 h1, .hero2 h1, .hero3 h2, .hero4 h1" ,{
-    y:120,
+tl.from("#hero1 h1, #hero2 h1, #hero4 h1" ,{    //hero3 h2 website pe nhi dikh rha
+    y:140,
     stagger:0.2
+},"a")
+tl.from("#hero3 h1" ,{    //hero3 h1 website pe nhi dikh rha gsap me dikkt thi fir humne from ki jagah to lagaya gsap me
+    y:140,
+    delay:-0.4
 })
 }
 function cursorAnimation(){
