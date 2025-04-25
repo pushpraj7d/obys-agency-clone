@@ -26,16 +26,14 @@ html,body{
 
 body{
     overflow-x: hidden;
+    /* background-color: #151515; */
 }
-#crsr{
-    height: 2.4vw;
-    width: 2.5vw;
-    border: 2px solid #ffffffca;
-    border-radius: 50%;
-    position: fixed;
-    z-index: 999;
+
+.mousefollower{
+    border: 2px solid #fff;
+    background-color: rgb(255, 255, 255);
+    scale: 2;
     mix-blend-mode: difference;
-    transform: translate(-50%, -50%);
 }
 #loader{
     height: 100%;
@@ -118,7 +116,7 @@ body{
 }
 #main{
     position: relative;
-    background-color: #030303;
+    background-color: #151515;
 }
 
 #page1{
@@ -229,6 +227,14 @@ body{
     position: relative;
     left: 29%;
     background-image: url(https://obys.agency/wp-content/uploads/2022/11/Showreel-2022-preview-1.jpg);
+    background-size: cover;
+    background-position: center;
+}
+#video-container video{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    opacity: 0;
 }
 #video-cursor{
     height: 9vw;
@@ -236,7 +242,7 @@ body{
     background-color: #FFA63D;
     border-radius: 50%;
     position: absolute;
-    z-index: 9;
+    z-index: 999;
     top: -10%;
     left: 70%;
     display: flex;
@@ -262,11 +268,148 @@ body{
 }
 
 #page3{
-    min-height: 100vh;
+    height: auto;
     width: 100%;
-    background-color: #7d7777;
+    background-color: #151515;
+    position: relative;
+    padding: 7vh 2vw;
+    margin-bottom: 20vh;
+    overflow: auto;
+    margin-top: 20vh;
+}
+#page3-container{
+    position: relative;
+    width: 65vw;
+    left: 30%;
+}
+#page3 h1{
+    font-size: 7vw;
+    text-transform: uppercase;
+    position: relative;
+    /* padding-left: 25vw; */
+}
+#page3 h1::before{
+    content:"02";
+    position: absolute;
+    font-size: 3vw;
+    font-weight: 100;
+    font-family: 'Silk Serif';
+    left: -12%;
+    top: 10%;
+}
+#page3 .underline{
+    width: 100%;
+    margin: 5vh 0;
+    /* margin: 5vh 0vh; */
+    height: 1px;
+    background-color: #fff;
+}
+#image-div-container{
+    
+   /* background-color: red; */
+   padding: 1vw;
+   position: relative;
+   display: flex;
+   align-items: flex-start;
+   justify-content:flex-start;
+   flex-wrap: wrap;
+}
+.image-div{
+    flex-shrink: 0;
+    position: relative;
+    overflow: hidden;
+    height: 39vw;
+    width: 29vw;
+    margin: 2vw;
+    /* background-color: blue; */
+}
+.image-div:nth-child(1){
+    height: 33vw;
+    width: 24vw;
+}
+
+.image-div img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+.page3-circle1{
+    height: 23vw;
+    width: 23vw;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 35vh;
+    margin-left: 8vw;
     position: relative;
 }
+.page3-circle1 svg{
+    height: 40%;
+    object-fit: cover;
+    /* position: relative */
+}
+.page3-circle2{
+    height: 23vw;
+    width: 23vw;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* margin-top: 5vh; */
+    position: relative;
+    /* margin-left: 8vw; */
+}
+.page3-circle2 svg{
+    rotate: -45deg;
+    height: 40%;
+    object-fit: cover;
+    /* position: relative; */
+}
+.circle-in{
+    position: absolute;
+    background-color: #fff;
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    scale: 0;
+    transition: all ease 0.3s;
+}
+.circle-in p{
+    font-size: 0.95vw;
+    width: 60%;
+    font-weight: 500;
+    color: #000000;
+    scale: 0;
+   
+    transition: all ease 0.3s;
+    transition-delay: 0.2s ;
+    opacity: 0;
+
+}
+.page3-circle1:hover .circle-in{
+    scale: 1;
+}
+.page3-circle1:hover .circle-in p{
+    scale: 1;
+    opacity: 1;
+}
+.page3-circle2:hover .circle-in{
+    scale: 1;
+}
+.page3-circle2:hover .circle-in p{
+    scale: 1;
+    opacity: 1;
+}
+
 #page4{
     position: relative;
     min-height: 100vh;
@@ -421,12 +564,13 @@ body{
 }
 
 #footer{
-    min-height: 80vh;
+    min-height: 100vh;
     width: 100%;
     background-color: #151515;
     position: relative;
     padding-left: 28vw;
     padding-right: 2vw;
+    margin-bottom: 5vh;
 }
 #footer h1{
      font-size: 7vw;
@@ -470,7 +614,405 @@ body{
     font-weight: 500;
     /* margin: 0.2vh 0; */
 }
-#footer h5{
+/* #footer h5{
     font-weight: 500;
     font-size: 1vw;
+} */
+._canvas_container{                        /*  gooey effect nhi lg rha tha is liye humne ye lagya */
+    z-index: 99999 !important;
+    pointer-events: none;
+}
+
+#flag{
+    height: 25vw;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transform: translate(-50%,-50%);
+} 
+#hero3{
+    /* background-color: red; */
+    position: relative;
+    z-index: 99;
+    width: 55%;
+}
+
+
+
+/* Yaha se hum responsive karna start kiye  */
+
+
+@media  (max-width : 600px) {
+    
+#page1{
+    height: 60vh;
+    width: 100vw;
+    background-color: #151515;
+    position: relative;
+    padding-top: 1px;
+}
+.filler{
+    background-color: #151515;
+    height: 25vh;
+    width: 100%;
+}
+
+#page3{
+    height: 100vh;
+    width: 100%;
+}
+
+#nav{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 2vw 4vw;
+    position: fixed;
+    width: 100%;
+    top: 0;
+}
+#nav svg{
+    scale: 0.8;
+}
+#nav-part2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3vw;
+    display: none;
+}
+
+#nav-part2 h4{
+    font-size: 1.2vw;
+    font-weight: 500;
+}
+
+.hero{
+    width: 72%;
+    margin-left: 6%;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.hero:nth-child(2){
+    margin-top: 25vh;
+}
+.hero h1{
+    text-transform: uppercase;
+    font-size: 9.8vw;
+    font-weight: 500;
+    line-height: 9.8vw;
+    letter-spacing: 0.5vw;
+   position: relative;
+}
+#hero1::before{
+    content:"01";
+    position: absolute;
+    font-size: 4vw;
+    font-weight: 100;
+    font-family: 'Silk Serif';
+    left: 6%;
+    top: 35%;
+}
+
+#hero3 h2{
+    text-transform: uppercase;
+    font-size: 7vw;
+    font-weight: 600;
+    line-height: 7.5vw;
+    letter-spacing: 0.5vw;
+    border-bottom: 0.5vw solid #fff;
+    padding-bottom: 0.5vw;
+    transition: all ease 0.3s;
+}
+
+
+#page2{
+    height: 60vh;
+    width: 100%;
+    background-color:#151515 ;
+    position: relative;
+}
+#video-container {
+    background-color: red;
+    height: 50vh;
+    width: 100vw;
+    position: relative;
+    left: 0;
+    background-image: url(https://obys.agency/wp-content/uploads/2022/11/Showreel-2022-preview-1.jpg);
+    background-size: cover;
+    background-position: center;
+}
+#video-container video{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    opacity: 0;
+}
+#video-cursor{
+    height: 19vw;
+    width: 19vw;
+    background-color: #FFA63D;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 999;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+#video-cursor i{
+    font-size: 5vw;
+}
+#video-container img{
+    position: absolute;
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    top: 0;
+}
+#video-container video{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    
+}
+
+
+#page3{
+    height: auto;
+    width: 100%;
+    background-color: #151515;
+    position: relative;
+    padding: 7vh 2vw;
+    margin-bottom: 20vh;
+    overflow: auto;
+    margin-top: 60vh;
+}
+#page3-container{
+    position: relative;
+    width: 70%;
+    left: 2%;
+}
+#page3 h1{
+    font-size: 9vw;
+    text-transform: uppercase;
+    position: relative;
+    /* padding-left: 25vw; */
+}
+#page3 h1::before{
+    content:"02";
+    position: absolute;
+    font-size: 4vw;
+    font-weight: 100;
+    font-family: 'Silk Serif';
+    top: -10vw;
+    left: 0vw;
+}
+#page3 .underline{
+    width: 100%;
+    margin: 5vh 0;
+    /* margin: 5vh 0vh; */
+    height: 1px;
+    background-color: #fff;
+}
+#image-div-container{
+    
+   /* background-color: red; */
+   padding: 1vw;
+   position: relative;
+   display: flex;
+   align-items: flex-start;
+   justify-content:flex-start;
+   flex-wrap: wrap;
+   justify-content: center;
+   padding: 3vw;
+}
+.image-div{
+    flex-shrink: 0;
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    width: 95vw;
+    margin: 8vw 0vw;
+    
+    /* background-color: blue; */
+}
+.image-div:nth-child(1){
+    height: 100%;
+    width: 95vw;
+}
+
+.image-div img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+.page3-circle1{
+    display: none;
+   
+}
+
+.page3-circle2{
+    display: none;
+}
+
+
+#page4{
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    background-color: #151515;
+    padding: 7vh 0;
+    margin-top: 8vh;
+}
+#page4-content{
+   
+    margin-top: 20vh;
+    position: relative;
+    width: 100vw;
+    left: 5%;
+    /* background-color: red; */
+}
+#page4-content h1{
+    font-size: 10vw;
+    text-transform: uppercase;
+    position: relative;
+}
+#page4-content h1::before{
+    content:"03";
+    position: absolute;
+    font-size: 5vw;
+    font-weight: 100;
+    font-family: 'Silk Serif';
+    left: 0%;
+    top: -8vw;
+}
+#page4-content .underline{
+    width: 90%;
+    margin: 5vh 0;
+    /* margin: 5vh 0vh; */
+    height: 1px;
+    background-color: #fff;
+}
+#page4-content>p{
+    margin-top: 5vh;
+    font-size: 5vw;
+    width: 80%;
+    margin-bottom: 9.75vw;
+}
+#page4-flex{
+    display: flex;
+    flex-direction: column-reverse;
+}
+#page4-flex img{
+    width: 90%;
+    object-fit: cover;
+    
+}
+#page4-flex p{
+    font-size: 4vw;
+    width: 70%;
+    margin-left: 0;
+    margin-bottom: 7vw;
+}
+
+#page4-blue-div{
+    background-color: #3F7DF4;
+    width: 90vw;
+    padding: 3vw;
+    position: relative;
+    margin-top: 10vh;
+    margin-left: 0vw;
+    margin-bottom: 25vh;
+}
+.blue-div-elem{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 4vw 0;
+    border-bottom: 0.1vw solid #ffffff9e;
+}
+.blue-div-elem h4{
+    font-size: 3.75vw;
+    font-weight: 500;
+    padding: 2vh 0;
+}
+.blue-div-elem p{
+    width: 50%;
+    font-size: 3.1vw;
+    padding: 2vh 0;
+
+}
+#page5{
+    min-height: 50vh;
+    width: 100%;
+    background-color: #151515;
+    position: relative;
+    margin-top: 15vh;
+    /* padding: 5vw 0; */
+}
+
+#footer{
+    min-height: 80vh;
+    width: 100%;
+    background-color: #151515;
+    position: relative;
+    padding-left: 5vw;
+    padding-right: 2vw;
+}
+#footer h1{
+    padding-top: 3vh;
+     font-size: 10vw;
+     text-transform: uppercase;
+     position: relative;
+}
+#footer h1::before{
+    content:"04";
+    position: absolute;
+    font-size: 5vw;
+    font-weight: 100;
+    font-family: 'Silk Serif';
+    left: 0%;
+    top: -5vw;
+}
+.underline{
+    height: 1px;
+    width: 95%;
+    background-color: #fff;
+    margin: 3vw 0;
+}
+#footer-div{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding-right:15vw;
+    padding-top: 4vw;
+    margin-bottom: 3vw;
+    gap: 5vh;
+}
+
+#footer-div h6{
+ font-size: 4.5vw;
+ margin-bottom: 2.5vw;
+ font-weight: 500;
+}
+.box{
+    width: 90%;
+    line-height: 5.75vw;
+}
+#footer-div h5{
+    font-size: 5.75vw;
+    font-weight: 400;
+    margin: 0.2vh 0;
+}
+
 }
